@@ -1,26 +1,46 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-to-top {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-15vh);
+  }
+}
+
+@utility animate-fade-in {
+  animation: fade-in 0.8s ease-out forwards;
+}
+
+@utility animate-fade-in-up {
+  animation: fade-in-up 0.8s ease-out forwards;
+}
+
+@utility animate-slide-to-top {
+  animation: slide-to-top 1s ease-out 0.5s forwards;
+}
+
+@utility animation-delay-800 {
+  animation-delay: 0.8s;
 }
