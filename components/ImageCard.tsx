@@ -36,18 +36,24 @@ function ImageCard({ image, position, imageVariants, onDragEnd,textinfo }: Image
 
                 <Image
                     src="/card/set.png"
-                    className=""
+               
                     width={121}
                     height={30}
                     alt="image"
+                  
+                    onDrag={(e)=>e.preventDefault()}
+                    onDragEnter={(e)=>e.preventDefault()}
+                    onDragOver={(e)=>e.preventDefault()}
+                    onDragLeave={(e)=>e.preventDefault()}
                 />
                 <div className="flex-1 flex flex-col items-center gap-5 justify-center">
                     <Image
                         src={`/card${image}`}
-                        className="pointer-none"
+                        className="pointer-none select-none "
                         width={200}
                         height={200}
                         alt="image"
+
                     />
                     <strong className="font-semibold text-center text-2xl text-[#632A5F]">{textinfo.text}</strong>
                 </div>

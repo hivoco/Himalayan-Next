@@ -17,7 +17,13 @@ function Card() {
     const [showPopup, setShowPopup] = useState(false)
 
     const handleBack = () => {
-        router.back()
+        if(success){
+window.location.reload()
+        }
+        else{
+            router.back()
+        }
+        
     }
 
     const { startMusic } = useMusic()
@@ -155,7 +161,7 @@ function Card() {
                     )}
 
                     <button
-                        className="absolute bottom-40 px-8 py-3 text-white font-semibold rounded-lg transition-colors z-30 backdrop-blur-md bg-white/5 border-2 disabled:opacity-50"
+                        className="absolute bottom-10 px-8 py-3 text-white font-semibold rounded-lg transition-colors z-30 backdrop-blur-md bg-white/5 border-2 disabled:opacity-50"
                         onClick={success ? handleViewReport : error ? handleTryAgain : handleGenerateReport}
                         disabled={loading || (!error && !success && !batchCode.trim())}
                     >

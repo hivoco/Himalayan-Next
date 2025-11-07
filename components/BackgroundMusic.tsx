@@ -13,7 +13,7 @@ function BackgroundMusic({ shouldPlay }: BackgroundMusicProps) {
     if (!audioRef.current) {
       audioRef.current = new Audio('/music.mp3') // Replace with your music file path
       audioRef.current.loop = true
-      audioRef.current.volume = 0.3 // Adjust volume (0.0 to 1.0)
+      audioRef.current.volume = 0.2 // Adjust volume (0.0 to 1.0)
     }
 
     if (shouldPlay && audioRef.current.paused) {
