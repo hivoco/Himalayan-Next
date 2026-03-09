@@ -40,7 +40,17 @@ window.location.reload()
         setSuccess(false)
 
         try {
-            const response = await fetch(`https://apiserv.himalayansaffron.in/get-image-url?image=${batchCode}`)
+            const controller = new AbortController()
+            const timeoutId = setTimeout(() => controller.abort(), 15000)
+
+            const response = await fetch(
+                `https://apiserv.himalayansaffron.in/get-image-url?image=${batchCode}`,
+                { signal: controller.signal }
+            )
+            clearTimeout(timeoutId)
+
+            if (!response.ok) throw new Error('Server error')
+
             const data = await response.json()
 
             if (data.image_url && data.image_url !== "") {

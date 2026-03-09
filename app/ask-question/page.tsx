@@ -43,13 +43,26 @@ function ChatPage() {
         setLoading(true)
 
         try {
-            const response = await fetch(`https://apiserv.himalayansaffron.in/ask_hivoco?question=${encodeURIComponent(userMessage)}`)
+            const controller = new AbortController()
+            const timeoutId = setTimeout(() => controller.abort(), 15000)
+
+            const response = await fetch(
+                `https://apiserv.himalayansaffron.in/ask_hivoco?question=${encodeURIComponent(userMessage)}`,
+                { signal: controller.signal }
+            )
+            clearTimeout(timeoutId)
+
+            if (!response.ok) throw new Error('Server error')
+
             const data = await response.json()
 
             // Add bot response
             setMessages(prev => [...prev, { type: 'bot', text: data.Answer }])
         } catch (err) {
-            setMessages(prev => [...prev, { type: 'bot', text: 'Sorry, something went wrong. Please try again.' }])
+            const message = err instanceof DOMException && err.name === 'AbortError'
+                ? 'Request timed out. Please try again.'
+                : 'Sorry, something went wrong. Please try again.'
+            setMessages(prev => [...prev, { type: 'bot', text: message }])
         } finally {
             setLoading(false)
         }

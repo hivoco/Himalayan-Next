@@ -52,12 +52,8 @@ function FullScreenVideo({
 
   useEffect(() => {
     setIsLoading(true)
-    setTimeout(()=>{
-setIsLoading(false)
-    },6000)
-   handleRotate()
+    handleRotate()
   }, [])
-  
 
   const handleBack = () => {
     router.back()
@@ -67,13 +63,13 @@ setIsLoading(false)
     router.back()
   }
 
-  // const handleCanPlay = () => {
-  //   setIsLoading(false)
-  // }
+  const handleCanPlay = () => {
+    setIsLoading(false)
+  }
 
-  // const handleWaiting = () => {
-  //   setIsLoading(true)
-  // }
+  const handleWaiting = () => {
+    setIsLoading(true)
+  }
 
   const toggleMute = () => {
     if (videoRef.current) {
@@ -101,8 +97,8 @@ setIsLoading(false)
         muted={muted}
         playsInline
         controls={false}
-        // onCanPlay={handleCanPlay}
-        // onWaiting={handleWaiting}
+        onCanPlay={handleCanPlay}
+        onWaiting={handleWaiting}
         onEnded={handleVideoEnd}
         className="transition-transform duration-500 object-cover"
         style={isRotated ? {
