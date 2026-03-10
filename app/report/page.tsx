@@ -192,11 +192,12 @@ window.location.reload()
                         >
                             ✕
                         </button>
-                        <Image 
-                            src={imageUrl} 
-                            alt="Certificate" 
+                        <Image
+                            src={imageUrl}
+                            alt="Certificate"
                             width={300}
                             height={600}
+                            unoptimized
                             className="w-full object-contain md:h-[700px] rounded-lg"
                         />
                     </div>
