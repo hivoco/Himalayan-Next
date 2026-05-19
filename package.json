@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "NODE_OPTIONS='--max-old-space-size=512' next start -p 8110",
+    "start": "serve out -p 8110 -s",
     "lint": "eslint"
   },
   "dependencies": {
@@ -13,7 +13,8 @@
     "lucide-react": "^0.552.0",
     "next": "16.0.1",
     "react": "19.2.0",
-    "react-dom": "19.2.0"
+    "react-dom": "19.2.0",
+    "serve": "^14.2.6"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
